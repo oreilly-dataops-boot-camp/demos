@@ -1,0 +1,3 @@
+[submodule "postgresql/dataops-api"]
+	path = postgresql/dataops-api
+	url = git@github.com:ojhughes/dataops-api.git

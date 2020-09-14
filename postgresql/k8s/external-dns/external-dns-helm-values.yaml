@@ -1,0 +1,9 @@
+sources:
+- service
+- ingress
+domainFilters:
+- dataops.olliehugh.es
+provider: google
+google:
+  project: cf-sandbox-ohughes
+  serviceAccountSecret: clouddns-dns01-solver-svc-acct

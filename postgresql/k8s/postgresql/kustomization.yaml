@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dataops-api
+secretGenerator:
+- name: gcp-cloud-credentials
+  type: Opaque
+  files:
+  - secret/credentials.json
+generatorOptions:
+  disableNameSuffixHash: true

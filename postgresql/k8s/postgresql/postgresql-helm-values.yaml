@@ -1,0 +1,5 @@
+aws_or_gcp:
+  additional_secret_mount: "gcp-cloud-credentials"
+  additional_secret_mount_path: "/var/secrets/google"  # or where ever you want to mount the file
+  wal_gs_bucket: "postgres-backups-bucket"  # name of bucket on where to save the WAL-E logs
+  gcp_credentials: "/var/secrets/google/credentials.json"

@@ -1,0 +1,44 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: gcr.io/cf-sandbox-ohughes/dataops-api
+    context: dataops-api
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+      trustBuilder: true
+      dependencies:
+        paths:
+        - .
+deploy:
+  kustomize:
+    paths:
+    - dataops-api/k8s/
+    - k8s
+  helm:
+    flags:
+      install: [ "--create-namespace" ]
+    releases:
+      - name: postgresql-operator
+        chartPath: postgres-operator/postgres-operator
+        valuesFiles: [k8s/postgresql/postgresql-helm-values.yaml]
+        remote: true
+        namespace: dataops-api
+        wait: true
+
+      - name: postgresql-operator-ui
+        chartPath: postgres-operator-ui/postgres-operator-ui
+        valuesFiles: [k8s/postgresql-ui/postgresql-ui-helm-values.yaml]
+        remote: true
+        namespace: dataops-api
+        wait: true
+
+      - name: external-dns
+        chartPath: bitnami/external-dns
+        valuesFiles: [ k8s/external-dns/external-dns-helm-values.yaml ]
+        remote: true
+        namespace: external-dns
+
+

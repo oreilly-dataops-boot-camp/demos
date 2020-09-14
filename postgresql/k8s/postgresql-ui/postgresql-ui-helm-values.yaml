@@ -1,0 +1,12 @@
+envs:
+  operatorApiUrl: "http://postgresql-operator-postgres-operator:8080"
+  operatorClusterNameLabel: "cluster-name"
+  targetNamespace: "dataops-api"
+service:
+  type: "NodePort"
+  port: "8081"
+ingress:
+  enabled: true
+  hosts:
+    - host: pg.dataops.olliehugh.es
+      paths: [""]

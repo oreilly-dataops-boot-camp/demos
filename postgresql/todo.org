@@ -1,0 +1,7 @@
+#+TITLE: Demo tasks
+* TODO Add flask API
+* TODO zalando operator in skaffold
+* TODO Ingress for flask
+* TODO Create database
+* TODO Edit connection for flask DB
+* TODO
