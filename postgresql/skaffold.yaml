@@ -4,7 +4,7 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-  - image: gcr.io/cf-sandbox-ohughes/dataops-api
+  - image: ojhughes/dataops-api
     context: dataops-api
     buildpacks:
       builder: gcr.io/buildpacks/builder:v1
@@ -34,11 +34,5 @@ deploy:
         remote: true
         namespace: dataops-api
         wait: true
-
-      - name: external-dns
-        chartPath: bitnami/external-dns
-        valuesFiles: [ k8s/external-dns/external-dns-helm-values.yaml ]
-        remote: true
-        namespace: external-dns
 
 
